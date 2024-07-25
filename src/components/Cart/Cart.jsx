@@ -4,6 +4,7 @@ import axios from "axios"
 export default function Cart(props) {
 
     const navigate = useNavigate();
+    const [isClicked,setIsClicked]=React.useState(false);
     const [user,setUser]=React.useState();
     React.useEffect(() => {
 
@@ -116,6 +117,7 @@ export default function Cart(props) {
     }
 
     async function handleClick() {
+        setIsClicked(true);
         let data = [];
         const date = new Date();
         let dateMDY = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
@@ -137,7 +139,7 @@ export default function Cart(props) {
             alert("Choose Payment Method First !");
         }
         else if(data[0].payment ==="counter"){
-        axios.post("https://canteen-fresh-backend.onrender.com/myorders",{data,user})
+        await axios.post("https://canteen-fresh-backend.onrender.com/myorders",{data,user})
             .then(res=>{console.log(res)})
             .catch(err=>{console.log(err)})
             navigate("/OrderResult", { state: data });
@@ -290,9 +292,12 @@ export default function Cart(props) {
 
                             </div>
 
-                            <button onClick={handleClick} className="min-w-[150px] py-3 px-4 text-sm font-semibold rounded text-white bg-yellow-400 hover:bg-slate-950 focus:outline-none w-full bg-primary-600 hover:bg-primary-700 focus:ring-4focus:ring-primary-300 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                            {!isClicked && <button onClick={handleClick} className="min-w-[150px] py-3 px-4 text-sm font-semibold rounded text-white bg-yellow-400 hover:bg-slate-950 focus:outline-none w-full bg-primary-600 hover:bg-primary-700 focus:ring-4focus:ring-primary-300 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                             Confirm Order
-                            </button>
+                            </button>}
+                            {isClicked && <div className="min-w-[150px] py-3 px-4 text-sm font-semibold rounded text-white bg-green-400 focus:outline-none w-full bg-primary-600 text-center">
+                        Processing...
+                        </div>}
                             <div class="flex items-center justify-center gap-2">
                                 <span class="text-sm font-normal text-gray-500 dark:text-gray-600"> or </span>
                                 <Link to={"/menu"} title="" class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
