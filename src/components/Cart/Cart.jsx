@@ -137,7 +137,7 @@ export default function Cart(props) {
             alert("Choose Payment Method First !");
         }
         else if(data[0].payment ==="counter"){
-        await axios.post("https://canteen-fresh-backend.onrender.com/myorders",{data,user})
+        axios.post("https://canteen-fresh-backend.onrender.com/myorders",{data,user})
             .then(res=>{console.log(res)})
             .catch(err=>{console.log(err)})
             navigate("/OrderResult", { state: data });
