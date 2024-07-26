@@ -49,10 +49,10 @@ export default function LiveOrders({merchant}){
           
         });
         
-      return  () => {
-        socket.off('new_order');
-        socket.disconnect();
-      };
+      // return  () => {
+      //   socket.off('new_order');
+      //   socket.disconnect();
+      // };
     }, [socket]);
 
       
