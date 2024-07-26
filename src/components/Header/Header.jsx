@@ -30,7 +30,7 @@ export default function Header(props)
             };
         
             fetchData();
-        }, [loggedInData, loggedIn]);
+        }, [loggedInData]);
 
         console.log(dash)
     

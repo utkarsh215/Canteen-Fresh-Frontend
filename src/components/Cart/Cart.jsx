@@ -140,7 +140,7 @@ export default function Cart(props) {
         }
         else if(data[0].payment ==="counter"){
             setIsClicked(true);
-        axios.post("https://canteen-fresh-backend.onrender.com/myorders",{data,user})
+         axios.post("https://canteen-fresh-backend.onrender.com/myorders",{data,user})
             .then(res=>{console.log(res)})
             .catch(err=>{console.log(err)})
             // navigate("/OrderResult", { state: data });
