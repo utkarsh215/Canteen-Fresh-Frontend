@@ -150,7 +150,7 @@ export default function Home() {
 
 
         <div className="max-md:flex md:justify-center">
-            <h1 class="mx-auto md:mx-32 my-16 text-5xl font-extrabold tracking-tight leading-none text-slate-800 md:text-5xl lg:text-6xl">Featured Canteen(s)</h1>
+            <h1 class="max-sm:text-center mx-auto md:mx-32 my-16 text-5xl font-extrabold tracking-tight leading-none text-slate-800 md:text-5xl lg:text-6xl">Featured Canteen(s)</h1>
         </div>
         <div className="mb-4 mx-10 md:mx-32 overflow-x-auto whitespace-nowrap">
             {canteen()}
