@@ -181,7 +181,7 @@ export default function Home() {
                     <h1 class="mx-auto md:mx-32 mt-16 text-5xl font-extrabold tracking-tight leading-none text-slate-100 max-sm:text-3xl md:text-5xl lg:text-5xl">Canteen's Cornor</h1>
                 </div>
                 <div className="max-md:flex md:justify-center">
-                    <h1 class="mx-auto md:mx-32 my-16 text-xl font-semibold tracking-tight leading-none text-slate-200 max-sm:text-2xl md:text-xl lg:text-2xl">Expand your bussiness, join Canteen Fresh Now!</h1>
+                    <h1 class="max-sm:text-center mx-auto md:mx-32 my-16 text-xl font-semibold tracking-tight leading-none text-slate-200 max-sm:text-2xl md:text-xl lg:text-2xl">Expand your bussiness, join Canteen Fresh Now!</h1>
                 </div>
                 <button onClick={() => { navigate("/merchant") }} className="mb-4 ml-auto mr-20 flex items-center gap-1 min-w-[150px] py-3 px-4 text-sm font-semibold rounded text-white bg-slate-900 hover:bg-slate-950 focus:outline-none">
                     <p>Shop's Desk</p>
