@@ -141,8 +141,17 @@ export default function Cart(props) {
         else if(data[0].payment ==="counter"){
             setIsClicked(true);
          axios.post("https://canteen-fresh-backend.onrender.com/myorders",{data,user})
-            .then(res=>{console.log(res)})
-            .catch(err=>{console.log(err)})
+            // .then(res=>{console.log(res)})
+            // .catch(err=>{console.log(err)})
+            .then(response => response.json())
+            .then(data => {
+            if (data.redirectUrl) {
+                window.location.href = data.redirectUrl;
+            } else {
+                console.log(data.message);
+            }
+})
+.catch(error => console.error('Error:', error));
             // navigate("/OrderResult", { state: data });
         }
         else{
