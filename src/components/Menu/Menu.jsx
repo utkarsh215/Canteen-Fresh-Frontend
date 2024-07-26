@@ -71,8 +71,8 @@ export default function Menu() {
                         <label className="text-sm mb-1 block">Quantity</label>
                         <input placeHolder="Enter quantity" name="quantity" onChange={(event)=>{handleChange(item.item_id , event )}}/>
                     </div> */}
-                    <div className="max-w-xl mx-auto bg-slate-100 border border-yellow-400 rounded-lg flex">
-                            <img class="rounded-lg w-48 h-40 max-sm:h-48" src={item.imageUrl} alt={item.name} />
+                    <div className="max-w-xl mx-auto bg-slate-100 border border-yellow-400 rounded-lg sm:flex">
+                            <img class="rounded-lg w-48 h-40 max-sm:w-auto max-sm:h-auto" src={item.imageUrl} alt={item.name} />
                         <div className="p-5">
                             <div className="sm:flex justify-between">
                             <h1 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 max-sm:max-w-48">{item.name}</h1>
