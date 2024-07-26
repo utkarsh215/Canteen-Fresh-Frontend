@@ -117,7 +117,7 @@ export default function Cart(props) {
     }
 
     async function handleClick() {
-        setIsClicked(true);
+        
         let data = [];
         const date = new Date();
         let dateMDY = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
@@ -139,13 +139,14 @@ export default function Cart(props) {
             alert("Choose Payment Method First !");
         }
         else if(data[0].payment ==="counter"){
+            setIsClicked(true);
         await axios.post("https://canteen-fresh-backend.onrender.com/myorders",{data,user})
             .then(res=>{console.log(res)})
             .catch(err=>{console.log(err)})
-            navigate("/OrderResult", { state: data });
+            // navigate("/OrderResult", { state: data });
         }
         else{
-
+            setIsClicked(true);
             let token;
             await axios.post("https://canteen-fresh-backend.onrender.com/api/get-token")
             .then(response => {token = response.data;
