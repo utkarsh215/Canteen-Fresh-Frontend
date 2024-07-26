@@ -143,10 +143,10 @@ export default function Cart(props) {
          axios.post("https://canteen-fresh-backend.onrender.com/myorders",{data,user})
             // .then(res=>{console.log(res)})
             // .catch(err=>{console.log(err)})
-            .then(response => response.json())
-            .then(data => {
-            if (data.redirectUrl) {
-                window.location.href = data.redirectUrl;
+            .then(res => {
+                console.log(res.data.redirectUrl);
+            if (res.data.redirectUrl) {
+                window.location.href = res.data.redirectUrl;
             } else {
                 console.log(data.message);
             }
