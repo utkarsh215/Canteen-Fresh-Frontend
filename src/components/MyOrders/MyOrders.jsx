@@ -35,8 +35,8 @@ export default function MyOrders(){
             orders.map((item)=>{
                 data.push(
                     <div>
-                        <div className="max-w-2xl mx-auto bg-slate-100 border border-yellow-400 rounded-lg flex">
-                                <img class="rounded-lg w-56" src={item.imageUrl} alt="" />
+                        <div className="max-w-2xl mx-auto bg-slate-100 border border-yellow-400 rounded-lg sm:flex">
+                                <img class="rounded-lg w-56 max-sm:w-auto max-sm:h-auto" src={item.imageUrl} alt="" />
                             <div className="p-5">
                             <h5 className="font-normal text-gray-700">{item.time} || {item.date}</h5>
                                 <div className="flex justify-between">
