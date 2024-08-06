@@ -163,7 +163,7 @@ export default function Cart(props) {
             .catch(err =>(console.log(err)));
             console.log(user);
             console.log(token);
-            await axios.post("https://canteen-fresh-backend.onrender.com/api/create-order",{token:token, amount:total(), user_id:user.user_id, buyer_name: user.first_name,last_name:user.last_name,enroll_id:user.enroll_id,email:user.email, cartData: data})
+            await axios.post("https://canteen-fresh-backend.onrender.com/api/create-order",{token:token, amount:total(), user_id:user._id, buyer_name: user.first_name,last_name:user.last_name,enroll_id:user.enroll_id,email:user.email, cartData: data})
             .then(response =>{console.log(response.data);
             // window.open(response.data,'_blank')
             window.open(response.data)
