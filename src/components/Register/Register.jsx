@@ -59,7 +59,7 @@ export default function Register(){
             {
               // alert(user.verified);
               console.log(user.verified);
-              if(user.verified === 1)
+              if(user.verified)
               {
                 found=true;
               }
