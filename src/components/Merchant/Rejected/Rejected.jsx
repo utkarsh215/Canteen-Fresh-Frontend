@@ -35,7 +35,7 @@ export default function Rejected(){
         function allOrders(){
             let data=[];
             orders.map((item)=>{
-                if(item.rejected===1)
+                if(item.rejected)
                 {
                 data.push(
                     <div>
