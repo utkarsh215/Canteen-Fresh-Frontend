@@ -15,7 +15,7 @@ export default function LiveOrders({merchant}){
         try {
           const token=localStorage.getItem('token');
           await axios.get("https://canteen-fresh-backend-1.onrender.com/myorders",{headers:{ Authorization: token}})
-          .then(res => {setOrders(res.data);console.log(orders)})
+          .then(res => {console.log(res.data);setOrders(res.data)})
           .catch(err =>{console.error(err)})
             
       } catch (error) {
