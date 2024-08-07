@@ -26,8 +26,6 @@ export default function LiveOrders({merchant}){
     }
     ,[]);
 
-
-
     React.useEffect(() => {
         socket.on('new_order',() => {
             const fetchData = async ()=>{
