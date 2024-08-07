@@ -9,7 +9,7 @@ export default function LiveOrders({merchant}){
     const [isOrder,setIsOrder] = React.useState(true);
 
     const socket = io('https://canteen-fresh-backend-1.onrender.com');
-    console.log(socket);
+    // console.log(socket);
     React.useEffect(()=>{
       const fetchData= async ()=>{
         try {
