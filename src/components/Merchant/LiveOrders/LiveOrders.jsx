@@ -102,7 +102,7 @@ export default function LiveOrders({merchant}){
         React.useEffect( () => {
             let data=[];
             orders.map((item) => {
-                if(item.rejected == false && item.completed == false)
+                if(item.rejected === false && item.completed === false)
                 {  
                 
                 data.push(
