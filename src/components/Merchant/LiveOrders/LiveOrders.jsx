@@ -17,7 +17,7 @@ export default function LiveOrders({merchant}){
           await axios.get("https://canteen-fresh-backend-1.onrender.com/myorders",{headers:{ Authorization: token}})
           .then(res => {setOrders(res.data)})
           .catch(err =>{console.error(err)})
-
+            console.log(orders)
       } catch (error) {
           console.log(error);
       }
@@ -26,7 +26,7 @@ export default function LiveOrders({merchant}){
     }
     ,[]);
 
-console.log(orders)
+
 
     React.useEffect(() => {
         socket.on('new_order',() => {
