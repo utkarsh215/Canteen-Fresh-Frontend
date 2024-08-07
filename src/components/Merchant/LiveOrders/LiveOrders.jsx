@@ -42,7 +42,7 @@ export default function LiveOrders({merchant}){
         return () => {
             socket.off('new_order', handleNewOrder);
         };
-    }, []);
+    }, [socket]);
 
     
 
