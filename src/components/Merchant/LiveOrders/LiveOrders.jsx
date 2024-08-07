@@ -26,7 +26,7 @@ export default function LiveOrders({merchant}){
     ,[]);
 
     React.useEffect(()=>{
-        console.log(hi);
+        console.log("hiii");
         socket.on('new_order',  (data) => {
             try {
             console.log("hey from live orders");
