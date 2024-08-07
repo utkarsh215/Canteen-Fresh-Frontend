@@ -7,7 +7,7 @@ export default function LiveOrders({merchant}){
     const [ordersData, setOrdersData] = React.useState([]);
 
     const [isOrder,setIsOrder] = React.useState(true);
-
+    
     const socket = io('https://canteen-fresh-backend-1.onrender.com');
     React.useEffect(()=>{
       const fetchData= async ()=>{
@@ -25,9 +25,10 @@ export default function LiveOrders({merchant}){
     }
     ,[]);
 
-    React.useEffect(()=>{
-        console.log("hiii");
+    // React.useEffect(()=>{
+    //     console.log("hiii");
         socket.on('new_order',  (data) => {
+            console.log("from inside the socket")
             try {
             console.log("hey from live orders");
             const token = localStorage.getItem('token');
@@ -41,7 +42,7 @@ export default function LiveOrders({merchant}){
         return () => {
         socket.off('new_order');
         };
-    },[]);
+    // },[]);
 
     
 
