@@ -26,14 +26,10 @@ export default function LiveOrders({merchant}){
     }
     ,[]);
 
-
+console.log(orders)
 
     React.useEffect(() => {
-     
-        console.log("hi")
-        
         socket.on('new_order',() => {
-            
             const fetchData = async ()=>{
                 try {
             console.log("hey from live orders");
@@ -72,7 +68,7 @@ export default function LiveOrders({merchant}){
 
     const handleReject = (orderId) => {
       orders.map(async (item)=>{
-          if(item.order_id === orderId)
+          if(item.order_id == orderId)
           {
              await axios.post("https://canteen-fresh-backend-1.onrender.com/edit_myorders",{item,rejected:true,completed:false})
                  .then(res =>{console.log(res})
@@ -152,7 +148,7 @@ export default function LiveOrders({merchant}){
             }
         
             setOrdersData(data);
-          }, [orders]);
+          },[orders]);
 
           return ordersData
     }
