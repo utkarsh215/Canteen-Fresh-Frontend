@@ -9,7 +9,7 @@ export default function LiveOrders({merchant}){
     const [isOrder,setIsOrder] = React.useState(true);
 
     const socket = io('https://canteen-fresh-backend-1.onrender.com');
-    // console.log(socket);
+    console.log(socket);
     React.useEffect(()=>{
       const fetchData= async ()=>{
         try {
@@ -27,42 +27,42 @@ export default function LiveOrders({merchant}){
     ,[]);
 
     React.useEffect(() => {
-        socket.on('new_order',() => {
-            const fetchData = async ()=>{
-                try {
-            console.log("hey from live orders");
-            const token = localStorage.getItem('token');
-            const response =await axios.get("https://canteen-fresh-backend-1.onrender.com/myorders", { headers: { Authorization: token } });
-            setOrders(response.data);
-              } catch (error) {
+        const handleNewOrder = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.get("https://canteen-fresh-backend-1.onrender.com/myorders", { headers: { Authorization: token } });
+                setOrders(response.data);
+            } catch (error) {
                 console.error(error);
-              }
             }
+        };
 
-            fetchData();
-          
-        });
-        
-      // return  () => {
-      //   socket.off('new_order');
-      //   socket.disconnect();
-      // };
-    }, [socket]);
+        socket.on('new_order', handleNewOrder);
 
-      
-       // const socket = io('https://canteen-fresh-backend-1.onrender.com');
+        return () => {
+            socket.off('new_order', handleNewOrder);
+        };
+    }, []);
+
     
-       //  socket.on('new_order', async () => {
-       //    try {
-       //      console.log("hey from live orders");
-       //      const token = localStorage.getItem('token');
-       //      const response =await axios.get("https://canteen-fresh-backend-1.onrender.com/myorders", { headers: { Authorization: token } });
-       //      setOrders(response.data);
-       //    } catch (error) {
-       //      console.error(error);
-       //    }
-       //  });
-  
+
+    // React.useEffect(() => {
+    //     socket.on('new_order',() => {
+    //         const fetchData = async ()=>{
+    //             try {
+    //         console.log("hey from live orders");
+    //         const token = localStorage.getItem('token');
+    //         const response =await axios.get("https://canteen-fresh-backend-1.onrender.com/myorders", { headers: { Authorization: token } });
+    //         setOrders(response.data);
+    //           } catch (error) {
+    //             console.error(error);
+    //           }
+    //         }
+
+    //         fetchData();
+          
+    //     });
+    // }, [socket]);
 
     const handleReject = (orderId) => {
       orders.map(async (item)=>{
