@@ -11,6 +11,7 @@ export default function LiveOrders({merchant}){
     const socket = io('https://canteen-fresh-backend-1.onrender.com');
     React.useEffect(()=>{
       const fetchData= async ()=>{
+          console.log("hi");
         try {
           const token=localStorage.getItem('token');
           await axios.get("https://canteen-fresh-backend-1.onrender.com/myorders",{headers:{ Authorization: token}})
@@ -22,27 +23,33 @@ export default function LiveOrders({merchant}){
       }
       }
         fetchData();
+
+        // Set up interval to fetch data periodically
+    const intervalId = setInterval(fetchData, 5000); // Adjust the interval time (in milliseconds) as needed
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
     }
     ,[]);
 
-    React.useEffect(()=>{
-        console.log("hiii");
-        socket.on('new_order', async (data) => {
-            console.log("from inside the socket")
-            try {
-            console.log("hey from live orders");
-            const token = localStorage.getItem('token');
-            const response =await axios.get("https://canteen-fresh-backend-1.onrender.com/myorders", { headers: { Authorization: token } });
-            setOrders(response.data);
-            } catch (error) {
-                console.log(error);
-            }
-        });
+    // React.useEffect(()=>{
+    //     console.log("hiii");
+    //     socket.on('new_order', async (data) => {
+    //         console.log("from inside the socket")
+    //         try {
+    //         console.log("hey from live orders");
+    //         const token = localStorage.getItem('token');
+    //         const response =await axios.get("https://canteen-fresh-backend-1.onrender.com/myorders", { headers: { Authorization: token } });
+    //         setOrders(response.data);
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     });
         
-        return () => {
-        socket.off('new_order');
-        };
-    },[]);
+    //     return () => {
+    //     socket.off('new_order');
+    //     };
+    // },[]);
 
     
 
