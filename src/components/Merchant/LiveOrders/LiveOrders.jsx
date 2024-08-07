@@ -27,7 +27,7 @@ export default function LiveOrders({merchant}){
     ,[]);
 
     React.useEffect(()=>{
-        socket.on('new_order', (data) => {
+        socket.on('new_order', async (data) => {
             try {
             console.log("hey from live orders");
             const token = localStorage.getItem('token');
