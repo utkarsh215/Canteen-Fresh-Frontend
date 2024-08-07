@@ -26,6 +26,7 @@ export default function LiveOrders({merchant}){
     ,[]);
 
     React.useEffect(()=>{
+        console.log(hi);
         socket.on('new_order',  (data) => {
             try {
             console.log("hey from live orders");
@@ -40,7 +41,7 @@ export default function LiveOrders({merchant}){
         return () => {
         socket.off('new_order');
         };
-    },[socket]);
+    },[]);
 
     
 
