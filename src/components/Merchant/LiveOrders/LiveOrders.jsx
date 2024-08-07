@@ -26,23 +26,25 @@ export default function LiveOrders({merchant}){
     }
     ,[]);
 
-    React.useEffect(() => {
-        const handleNewOrder = async () => {
+    React.useEffect(()=>{
+        socket.on('new_order', (data) => {
             try {
-                const token = localStorage.getItem('token');
-                const response = await axios.get("https://canteen-fresh-backend-1.onrender.com/myorders", { headers: { Authorization: token } });
-                setOrders(response.data);
+            console.log("hey from live orders");
+            const token = localStorage.getItem('token');
+            const response =await axios.get("https://canteen-fresh-backend-1.onrender.com/myorders", { headers: { Authorization: token } });
+            setOrders(response.data);
+    
             } catch (error) {
-                console.error(error);
+                console.log(error);
             }
-        };
 
-        socket.on('new_order', handleNewOrder);
-
+        
+        });
         return () => {
-            socket.off('new_order', handleNewOrder);
+        socket.off('new_order');
+        socket.disconnect();
         };
-    }, [socket]);
+    },[socket]);
 
     
 
