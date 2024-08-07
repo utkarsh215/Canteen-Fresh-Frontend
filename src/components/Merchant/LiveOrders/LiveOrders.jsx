@@ -11,11 +11,10 @@ export default function LiveOrders({merchant}){
     const socket = io('https://canteen-fresh-backend-1.onrender.com');
     React.useEffect(()=>{
       const fetchData= async ()=>{
-          console.log("hi");
         try {
           const token=localStorage.getItem('token');
           await axios.get("https://canteen-fresh-backend-1.onrender.com/myorders",{headers:{ Authorization: token}})
-          .then(res => {console.log(res.data);setOrders(res.data)})
+          .then(res => {setOrders(res.data)})
           .catch(err =>{console.error(err)})
             
       } catch (error) {
