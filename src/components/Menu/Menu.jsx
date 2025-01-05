@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Cart from "../Cart/Cart";
 export default function Menu() {
     const [items, setItems] = React.useState([]);
-    let user;
+    const user;
     const [ismerchant,setIsmerchant]=React.useState(false);
     let navigate = useNavigate();
     React.useEffect( () => {
