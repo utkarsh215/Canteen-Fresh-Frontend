@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 import Cart from "../Cart/Cart";
 export default function Menu() {
     const [items, setItems] = React.useState([]);
-    const user;
+    const [user, setUser] = React.useState();
     const [ismerchant,setIsmerchant]=React.useState(false);
     let navigate = useNavigate();
     React.useEffect( () => {
         const fetchData = async ()=>{
             const token = localStorage.getItem('token');
             await axios.get("https://canteen-fresh-backend-1.onrender.com/all", { headers: { Authorization: token } })
-            .then(res => { setItems(res.data.data); user = res.data.user_id ; setIsmerchant(res.data.ismerchant);console.log(res.data)})
+            .then(res => { setItems(res.data.data); setUser(res.data.user_id) ; setIsmerchant(res.data.ismerchant);console.log(res.data)})
             .catch(err => { console.log(err); navigate("/login"); })
         }
         
